@@ -1,0 +1,711 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[top=2cm, bottom=2cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{setspace}
+%\singlespacing
+\onehalfspacing 
+%\doublespacing
+
+
+%\usepackage{fullpage}
+\usepackage{float}
+\usepackage{multicol}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx,psfrag}
+\usepackage{subcaption}
+\usepackage[T1]{fontenc}
+\usepackage{times, amsmath, amsfonts, amssymb, amsthm}
+\usepackage{mathtools}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{pgfgantt}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage{tikz}
+\usepackage{amsfonts}
+\usetikzlibrary{positioning}
+\usepackage{tikz-cd}
+\usepackage{amsmath, xparse}
+\usepackage{hyperref}
+%\usepackage{pst-gantt}
+\usetikzlibrary{positioning, arrows.meta}
+
+%\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{comment}
+\includecomment{comment}
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{corollary}[theorem]{Corol\'ario}
+\newtheorem{proposition}[theorem]{Propositi\c{c}\~ao}
+\newtheorem{definition}[theorem]{Defini\c{c}\~ao}
+\theoremstyle{definition}
+\newtheorem{example}{Exemplo}
+\newtheorem*{remark}{Observa\c{c}\~ao}
+
+\newcommand{\fuzzy}{\textit{fuzzy }}
+\newcommand{\ds}{ \displaystyle}
+\newcommand{\card}{\operatorname{Card}}
+
+\newcounter{partF}
+
+\newcommand{\NMSE}{\mbox{NMSE}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\G}{\mathbb{G}}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\M}{\mathbb{M}}
+\newcommand{\A}{\mathbf{A}}
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\Y}{\mathbf{Y}}
+\newcommand{\FU}{\mathcal{F}(U)}
+\newcommand{\FV}{\mathcal{F}(V)}
+\newcommand{\vetx}{\boldsymbol{x}}
+\newcommand{\vetu}{\mathbf{u}}
+\newcommand{\vetv}{\mathbf{v}}
+\newcommand{\vety}{\boldsymbol{y}}
+\newcommand{\vetz}{\boldsymbol{z}}
+\newcommand{\ima}{\mathbf{a}}
+\newcommand{\imb}{\mathbf{b}}
+\newcommand{\imc}{\mathbf{c}}
+\newcommand{\ims}{\mathbf{s}}
+\newcommand{\impulse}{\mathbf{i}_{\mathbf{h},v}}
+\newcommand{\PX}{\mathcal{P}(\mathbf{X})}
+
+\newcommand{\bb}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bbb}{\begin{eqnarray}}
+\newcommand{\eee}{\end{eqnarray}}
+\newcommand{\benu}{\begin{enumerate}}
+\newcommand{\eenu}{\end{enumerate}}
+\newcommand{\tr}{\mbox{tr}}
+
+\newcommand{\vetw}{{\bf w}}
+\newcommand{\vetn}{{\bf n}}
+\newcommand{\tn}{\,\mathrm{t}\,}
+\newcommand{\sn}{\,\mathrm{s}\,}
+\newcommand{\ag}{\,\mathrm{a}\,}
+\newcommand{\bpm}{\begin{bmatrix}}
+\newcommand{\epm}{\end{bmatrix}}
+\newcommand{\alphav}{\mbox{\boldmath$\alpha$}}
+\newcommand{\thetav}{\mbox{\boldmath$\theta$}}
+\newcommand{\lambdav}{\mbox{\boldmath$\lambda$}}
+\newcommand{\gammav}{\mbox{\boldmath$\gamma$}}
+\newcommand{\sigmav}{\mbox{\boldmath$\sigma$}}
+\newcommand{\muv}{\mbox{\boldmath$\mu$}}
+\newcommand{\varthetav}{\mbox{\boldmath$\vartheta$}}
+\newcommand{\betav}{\mbox{\boldmath$\beta$}}
+\newcommand{\phiv}{\mbox{\boldmath$\phi$}}
+\newcommand{\Phiv}{\mbox{\boldmath$\Phi$}}
+\newcommand{\qeq}{\quad \mbox{and} \quad}
+\DeclareMathOperator{\sgn}{sgn}
+\newcommand{\prodi}[2]{\langle #1, #2 \rangle}
+
+\def\amax{\kern 0em\hbox{\rm \kern .25em\lower.1ex\hbox{\rlap{$\vee$}}\kern -.07em\lower.2ex\hbox{$\square$}\kern.25em}}
+\def\amin{\kern 0em\hbox{\rm \kern .25em\lower.1ex\hbox{\rlap{$\wedge$}}\kern -.07em\lower.2ex\hbox{$\square$}\kern.25em}}
+
+\def\boxmax{\kern 0em\hbox{\rm \kern .25em\lower.1ex\hbox{\rlap{$\vee$}}\kern -.07em\lower.2ex\hbox{$\square$}\kern.25em}}
+\def\boxmin{\kern 0em\hbox{\rm \kern .25em\lower.1ex\hbox{\rlap{$\wedge$}}\kern -.07em\lower.2ex\hbox{$\square$}\kern.25em}}
+\def\dualimp{\kern 0em\hbox{\rm \kern .25em\lower.1ex\hbox{\rlap{$\Rightarrow$}}\kern 0em\lower-1.2ex\hbox{$\overline{\hspace{2ex}}$}\kern.25em}}
+
+\def\circmax{\kern 0em\hbox{\rm \kern .25em\lower.1ex\hbox{\rlap{$\vee$}}\kern -.18em\lower-.1ex\hbox{$\bigcirc$}\kern.25em}}
+\def\circmin{\kern 0em\hbox{\rm \kern .25em\lower.1ex\hbox{\rlap{$\wedge$}}\kern -.18em\lower-.0ex\hbox{$\bigcirc$}\kern.25em}}
+
+\begin{document}
+\thispagestyle{empty}
+
+\noindent \parbox{0.15\columnwidth}{\includegraphics[width=0.8\linewidth]{Figuras/LogoUnicamp.jpg}}
+\parbox{0.85\columnwidth}{\large \bf 
+	\noindent Universidade Estadual de Campinas \\
+	\noindent Instituto de Matemática, Estatística e Computação Científica \\ 
+\noindent Departamento de Matemática Aplicada}
+
+\noindent \rule{\columnwidth}{1.3mm}
+
+\vspace{1cm}
+
+\begin{center}
+	{\LARGE Estudo sobre a Dinâmica e Capacidade de Armazenamento da Rede de Hopfield}
+\end{center}
+
+\vspace{2cm}
+\noindent {\Large \textbf{Orientador:} \em Marcos Eduardo Ribeiro do Valle Mesquita} \\
+{\large E-mail: valle@ime.unicamp.br}
+
+\vspace{0.5cm}
+\noindent {\Large \textbf{Orientando:} \em Vinícius Maciel de Sousa} \\
+{\large E-mail: v281391@dac.unicamp.br}
+
+
+\vspace{.5cm}
+
+\begin{abstract}
+	\noindent 
+    A rede de Hopfield é uma rede neural autoassociativa capaz de recuperar padrões previamente armazenados a partir de entradas ruidosas ou incompletas. Este trabalho apresenta, de forma sucinta, os conceitos fundamentais de redes neurais artificiais, iniciando pelo modelo de neurônio de McCulloch–Pitts e avançando para o estudo da rede de Hopfield, que constitui o foco principal da análise. Discutem-se em detalhe as propriedades centrais desse modelo, como a função de energia associada à dinâmica da rede e a probabilidade de sucesso no armazenamento e na recuperação de padrões. Com base nessas formulações teóricas, realizam-se experimentos computacionais com imagens da base MNIST. Em consonância com as previsões teóricas, avalia-se a capacidade do modelo de recuperar adequadamente os padrões armazenados. Observa-se um declínio significativo na capacidade de armazenamento quando os padrões não seguem uma distribuição uniforme, hipótese comumente adotada na literatura.
+    
+	\vspace{0.8cm}
+	\noindent {\bf Palavras-chave:} Rede de Hopfield, memória associativa, redes neurais, armazenamento de padrões.
+\end{abstract}
+
+\noindent \rule{\columnwidth}{1 mm}
+
+\begin{center} 
+	{\Large Campinas, \today.}
+\end{center}
+
+\newpage
+\section{Introdução}
+Neste relatório, focaremos nos estudos sobre algumas particularidades da Rede de Hopfield \cite{hopfield82}. Recentemente, tal assunto se tornou mais conhecido, devido ao fato de, em 2024, John Hopfield e Geoffrey Hinton receberem o Prêmio Nobel de Física daquele mesmo ano, em virtude de suas descobertas e invenções que permitiram o aprendizado de máquina — Machine Learning — com redes neurais artificiais.
+
+Hopfield foi uns dos pioneiros ao propor um modelo que imitasse a memória humana em computadores para encontrar padrões em conjunto de dados previamente armazenados. Ele foi motivado pelo modelo matemático das redes de spins que operam com valores binários $\{-1, 1\}$. Em seus trabalhos, desenvolveu um modelo que emulava uma memória associativa, termo cuja compreensão é fundamental para este estudo.
+
+Assim sendo, as memórias associativas são modelos inspirados na capacidade do cérebro humano armazenar padrões; por exemplo,  sabemos que um sinal de trânsito vermelho tem o significado atribuído à parada; ou que uma bandeira branca, em uma guerra, significa paz. 
+
+Nos nossos modelos estudados, não atribuímos significado a conceitos, como parada ou paz, mas, sim, a imagens que são associadas com outras imagens. 
+
+Além disso, um pilar substancial do trabalho de Hopfield foi a presença das redes neurais. Como o nome diz "neural", também há inspiração em como o nosso cérebro funciona, a partir de decisões realizadas por uma série de unidades de processamento que são chamadas de nós, basicamente neurônios, para prever ou classificar padrões complexos.
+
+Uma das partes mais importantes desta configuração é que as decisões tomadas são realizadas pelo conjunto e não por um único neurônio, o que o torna mais poderoso, pois se houver perda de alguns neurônios não irá afetar o todo.
+
+Agora, a partir desta breve explicação, podemos começar o nosso relatório, voltando um pouco no tempo para compreendermos mais nuances sobre os tópicos que foram rapidamente introduzidos.
+\section{Neurônio de McCulloch-Pitts}
+O neurônio de McCulloch-Pitts \cite{mcculloch43} foi o primeiro modelo de um neurônio artificial, criado por Warren McCulloch e Walter Pitts em 1943.
+
+Eles estudaram o neurônio biológico (Figura \ref{fig:neuronionatural}) que é uma célula que é dividida de forma simplificada em dendritos, corpo celular e axônio.
+\begin{itemize}
+    \item Dendritos: Responsáveis pelos canais de entrada de informações
+\item Corpo celular: Responsável pelo processamento das informações recebidas pelos dendritos.
+    \item Axônio: Canal de saída do neurônio, pode ser para outros neurônios ou outras partes do corpo.
+\end{itemize}
+
+Em virtude disso, o fluxo de informações pode ser visto como sempre no sentido Dendritos $\rightarrow$ Corpo Celular $\rightarrow$ Axônio.
+
+Ao mapear este comportamento, McCulloch e Pitts fizeram uma simplificação desta célula do nosso organismo para um neurônio artificial, o qual trabalha como um modelo que processa informações binárias como entrada e retorna uma única saída binária.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.4\textwidth]{Figuras/Neuronio_mcculloch/neuronio.png}
+    \caption{Representação de um neurônio. Fonte: \href{https://brasilescola.uol.com.br/o-que-e/biologia/o-que-e-neuronio.htm}{Brasil Escola}. Acessado em Outubro de 2025.}. 
+    \label{fig:neuronionatural}
+\end{figure}
+    
+
+
+Neste modelo, vamos considerar n entradas $X = \{x_1, x_2, \dots, x_n \}$ e cada entrada possui o seu peso correspondente $W = \{w_1, w_2, \dots, w_n \}$. Então, temos um valor que é chamado limiar H, sendo o valor mínimo para este neurônio ser ativado. Apresentamos, pois,  a Figura \ref{fig:mcp_neuron} que representa como este modelo funciona, sendo traduzida para o modelo matemático pela equação \ref{Eqmcp}
+\begin{figure}
+    \centering
+  
+\begin{tikzpicture}[
+    node distance=1cm and 2.5cm,
+    font=\Large,
+    % Estilos dos nos
+    input/.style={}, % Entradas sao apenas texto
+    neuron/.style={circle, draw, fill=blue!40, minimum size=3cm},
+    output/.style={}, % Saida e apenas texto
+    % Estilo das setas
+    arrow/.style={-Latex, thick}]
+% --- Entradas (Inputs) ---
+% Colocamos as 'n' entradas de exemplo
+\node[input] (x1) at (0, 3) {$x_1$};
+\node[input] (x2) at (0, 1.5) {$x_2$};
+\node[input] (dots) at (0, 0) {$\vdots$};
+\node[input] (xn) at (0, -1.5) {$x_n$};
+
+
+% --- O Neurônio (Unidade Central) ---
+% Este no representa o corpo do neuronio, que faz a soma
+% e contem o bias (b) e a funcao de ativacao (H)
+\node[neuron] (N) at (4, 0.5) {\Huge $\sum$};
+
+% Rotulo interno para a soma, baseado na sua Eq. 72
+
+% Rotulo para a funcao de ativacao H(·)
+\node[above=0.4cm of N, font=\large] (act_label) {$y = H(\cdot)$};
+
+
+% --- Saída (Output) ---
+\node[output] (y) [right=of N, node distance=3.5cm] {$y \in \{0, 1\}$};
+
+
+
+\draw[arrow] (x1) -- (N) node[midway, above, sloped] {$w_1$};
+\draw[arrow] (x2) -- (N) node[midway, above, sloped] {$w_2$};
+\draw[arrow] (xn) -- (N) node[midway, below, sloped] {$w_n$};
+
+% --- Conexão de Saída ---
+\draw[arrow] (N) -- (y);
+
+% --- Bloco com a Definição da Função (baseado na Eq. 72) --
+
+\end{tikzpicture}
+\caption{Diagrama esquemático do neurónio de McCulloch-Pitts.}
+\label{fig:mcp_neuron}
+\end{figure}
+
+
+\begin{equation}
+    \label{Eqmcp}
+    y= H\left(\sum_{i = 1}^{n}x_i\cdot w_i + b\right) = \begin{cases}
+        1, \quad \sum^n_{i = 1}x_iw_i + b \geq 0 \\
+        0, \quad \text{c.c}
+    \end{cases}
+    \quad \exists b \in \mathbb{N}
+\end{equation}
+
+
+
+
+\section{Redes Neurais Progressivas} 
+
+Este modelo \cite{haykin09} é um dos mais antigos e simples das redes neurais. Como uma rede neural, ela possui várias camadas, sendo representada na Figura \ref{fig:feedforwards}, na qual podemos ver três camadas: Uma a de entrada, outra a da oculta e, por fim, a da saída.
+
+É importante ressaltar que essa imagem é utilizada somente para fins ilustrativos, pois a camada oculta pode ser composta por várias outras camadas. O mais importante dessa figura é que podemos ver como são realizadas as conexões entre os neurônios deste modelo que são realizadas de forma em que cada neurônio de uma camada é ligado com todos os neurônios da próxima camada, e tal processo é realizado até o final da rede neural. 
+
+Durante o trabalho deste modelo de rede neural, nós temos duas fases:
+\begin{itemize}
+    \item Feedforward Phase: Esta é a fase em que os dados de entrada são inseridos na rede neural e se propagam através dela. A cada camada oculta, a soma ponderada das entradas é calculada e é passada por meio de uma função de ativação, que torna o modelo não linear. Este processo continua até chegar a camada de saída e é realizada uma previsão.
+    \item  Backpropagation Phase: Esta etapa começa a ser realizada após a previsão da Feedforward Phase em que uma vez é realizada, a diferença entre a saída prevista com a saída atual, denominado o erro, é calculada. Assim, temos um erro propagado pela rede e os pesos são determinados, a fim de minimizar tais ruídos. 
+\end{itemize}
+
+Por fim, um exemplo de um modelo com estrutura feedforward é a Memória Associativa Linear (LAM) por correlação. Este modelo, baseado no postulado de Hebb, mapeia diretamente uma entrada para uma saída através de uma matriz de pesos fixa, sem o uso de um processo de backpropagation para treinamento. Outros modelos, como as Memórias Associativas Morfológicas (MAMs), utilizam uma matemática distinta baseada na álgebra minimax para realizar suas operações.
+\begin{figure}[t]
+\centering
+\caption{Exemplo de uma Feedforwards Neural Network}
+\label{fig:feedforwards}
+\begin{tikzpicture}[
+    node distance=1.2cm and 2.5cm,
+    % --- ESTILOS IDÊNTICOS AOS DA RNN ---
+    input/.style={circle, draw, fill=green!40, minimum size=1cm},
+    hidden/.style={rectangle, draw, fill=blue!40, minimum size=1cm, rounded corners},
+    output/.style={circle, draw, fill=red!40, minimum size=1cm},
+    % Estilo das setas para ser identico
+    arrow/.style={-Latex, thick, draw=gray}
+]
+
+% --- Nós dos Neurônios (Lógica de posicionamento mantida) ---
+\node[input] (I-1) {$i_1$};
+\node[hidden] (H-2) [right=of I-1] {$h_2$};
+\node[hidden] (H-1) [above=of H-2] {$h_1$};
+\node[hidden] (H-3) [below=of H-2] {$h_3$};
+\node[output] (O-1) [right=of H-2] {$o_1$};
+
+% --- Conexões (com o novo estilo 'arrow') ---
+\draw[arrow] (I-1) -- (H-1);
+\draw[arrow] (I-1) -- (H-2);
+\draw[arrow] (I-1) -- (H-3);
+
+\draw[arrow] (H-1) -- (O-1);
+\draw[arrow] (H-2) -- (O-1);
+\draw[arrow] (H-3) -- (O-1);
+
+% --- Rótulos Alinhados (Lógica mantida) ---
+\node[below=of H-3, node distance=2cm, text width=5em, text centered] (H-Label) {Camada Oculta};
+\node[left=of H-Label, node distance=3.2cm, text width=5em, text centered] {Camada de Entrada};
+\node[right=of H-Label, node distance=3.2cm, text width=5em, text centered] {Camada de Saída};
+
+\end{tikzpicture}
+\end{figure}
+
+\section{Redes Neurais Recorrentes (Recurrent Neural Networks)}
+Ao entendermos as Feedforwards Neural Network \cite{Murthy2015LinearNetworks,rumelhart86b}, podemos avançar ao próximo modelo que são as Recurrent Associative Networks(RNNs), um modelo de redes neurais no qual as conexões formam um grafo direcionado ao longo de uma sequência temporal. 
+
+Tal característica, permite um dinamismo temporal e, além disso, as RNNs utilizam um estado interno, chamado de memória, para processar uma sequência de entradas. 
+
+Basicamente, a informação olha para trás na rede de neurônios, a fim de identificar a saída, ela não é influenciada somente pela nossa entrada atual, mas, sim, pela sequência de entradas fornecidas anteriormente.
+
+Por exemplo, considere a tarefa de prever a próxima palavra em uma frase. Se uma RNN recebe como entrada "Marcos comeu uma maçã ...", assim ela iria usar a sua memória interna que armazenou o contexto de que Marcos comeu uma maçã; então, dependendo de como nós construímos a nossa base de entradas, uma possibilidade alta do nosso modelo prever a próxima saída como "deliciosa" é alta. 
+
+Uma característica que as diverge das Feedforwards é que, dentro das camadas ocultas, os neurônios se conectam, formando estas sequências temporais que introduzimos.
+
+Então, apresentamos a Figura \ref{fig:RNN} que representa como este modelo é na prática. Nesta imagem, podemos ver na cor verde a camada de entrada, roxa a camada oculta e rosa a camada de saída. Agora, a camada oculta trabalha como a memória da rede, pois o nosso $h(t)$ depende de dois fatores, o nosso $x(t)$ e o $h(t-1)$. Isso a torna uma rede com uma  maior complexidade
+
+\begin{figure}[t]
+    \centering
+    \caption{Exemplo de uma RNNs}
+    \label{fig:RNN}
+    \begin{tikzpicture}[
+    node distance=1.5cm and 2cm,
+    % Estilos dos nos
+    input/.style={circle, draw, fill=green!40, minimum size=1cm},
+    hidden/.style={rectangle, draw, fill=blue!40, minimum size=1cm, rounded corners},
+    output/.style={circle, draw, fill=red!40, minimum size=1cm},
+    % Estilo das setas
+    arrow/.style={-Latex, thick}
+]
+
+% --- Desenhando os nós para cada passo de tempo ---
+
+% Tempo t-1
+\node[input] (x_t-1) {$x_{t-1}$};
+\node[hidden, above=of x_t-1] (h_t-1) {$h_{t-1}$};
+\node[output, above=of h_t-1] (y_t-1) {$y_{t-1}$};
+
+% Tempo t
+\node[input, right=of x_t-1] (x_t) {$x_t$};
+\node[hidden, above=of x_t] (h_t) {$h_t$};
+\node[output, above=of h_t] (y_t) {$y_t$};
+
+% Tempo t+1
+\node[input, right=of x_t] (x_t+1) {$x_{t+1}$};
+\node[hidden, above=of x_t+1] (h_t+1) {$h_{t+1}$};
+\node[output, above=of h_t+1] (y_t+1) {$y_{t+1}$};
+
+% Pontos de continuacao (reticencias)
+\node[right=of x_t+1, node distance=1.5cm] (dots_x) {$\dots$};
+\node[right=of h_t+1, node distance=1.5cm] (dots_h) {$\dots$};
+\node[right=of y_t+1, node distance=1.5cm] (dots_y) {$\dots$};
+
+
+% --- Desenhando as conexoes (setas) ---
+
+% Conexoes verticais (dentro de cada passo de tempo)
+\draw[arrow] (x_t-1) -- (h_t-1);
+\draw[arrow] (h_t-1) -- (y_t-1);
+
+\draw[arrow] (x_t) -- (h_t);
+\draw[arrow] (h_t) -- (y_t);
+
+\draw[arrow] (x_t+1) -- (h_t+1);
+\draw[arrow] (h_t+1) -- (y_t+1);
+
+% Conexao recorrente (entre os passos de tempo)
+% Esta e a seta mais importante que simboliza a RNN
+\draw[arrow, red, thick] (h_t-1) -- (h_t) node[midway, below, text=red] {Memória};
+\draw[arrow, red, thick] (h_t) -- (h_t+1) node[midway, below, text=red] {Memória};
+\draw[arrow, red, thick] (h_t+1) -- (dots_h);
+
+\end{tikzpicture}
+
+\end{figure}
+
+\section{A rede de Hopfield}
+A rede de Hopfield foi proposta pela primeira vez em 1982 por John Hopfield \cite{hopfield82}, sendo um tipo de memória auto-associativa, em que nos permite armazenar um conjunto com p imagens e N neurônios, no qual temos as entradas $\{\vetx^1, \vetx^2, \dots, \vetx^p\}$ com $x_i^\xi \in \{-1, 1\} \quad \forall i = 1, \dots, N$.
+
+Podemos ver um esquema de como o modelo funciona representado na Figura \ref{fig:hopfield network}. Nele conseguimos ver como são realizadas as conexões entre os neurônios, consideremos que cada círculo$(1,2, \dots, 5)$ represente um neurônio e observamos que cada neurônio possui uma conexão com os outros, para que cada neurônio seja influenciado por todos os outros, assim nós temos um comportamento coletivo. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width = 0.3 \textwidth]{Figuras/Hopfield Network/Hopfield Network.png}
+    \caption{Esquema da rede de Hopfield}
+    \label{fig:hopfield network}
+\end{figure}
+
+Diferentemente do neurônio de McCulloch-Pitts, o modelo de Hopfield introduz um sistema dinâmico que faz com que a rede evolua para um estado de equilíbrio, fornecendo um conceito de energia que será debatido nas próximas sessões. Por isso, Hopfield define a atualização dos neurônios por \cite{hecht-nielsen89}:
+\begin{equation}
+x_i^\xi = \sgn(\sum^N_{j = 0} w_{ij}x_j^\xi )
+\end{equation}
+Onde temos $\sgn(x)$ definida como:
+\begin{equation}
+    \sgn(x) = \begin{cases}
+        1 \quad x \geq 0 \\
+        -1, \quad \text c.c
+    \end{cases}
+\end{equation}
+
+Para a nossa matriz de pesos, iremos ter uma nova propriedade: a de conectarmos cada neurônio um ao outro, o que nos possibilita a formação de loops, que são uma propriedade importante das redes neurais 
+recorrentes. Definimos W, como:
+\begin{equation}
+    w_{ij} = \begin{cases} \sum^p_{\xi = 1}x_i^{\xi}x_j^{\xi}, \quad \text {se} \quad i \neq j \\
+  0, \quad \text c.c
+  
+    \end{cases} \qquad \forall j \in \mathbb{N} \mid j = 0, 1, \dots, \text N
+\end{equation}
+
+Com isso, temos um atributo interessante da nossa nova matriz de pesos que é a de ser simétrica e a diagonal principal ser nula \textemdash o que signifca que um neurônio não está ligando consigo mesmo.
+\begin{example}
+    Vamos implementar uma rede de Hopfield que armazena:
+\begin{equation}
+    \vetx^1 = \begin{bmatrix} +1 \\ 
+    +1 \\ 
+    -1 \\ 
+    +1 \\ 
+    -1 \end{bmatrix} \qquad \vetx^2 = \begin{bmatrix}
+        +1 \\ +1 \\ +1 \\ +1 \\ +1
+    \end{bmatrix}
+\end{equation}
+e o nosso vetor de entrada é:
+\begin{equation}
+\tilde{\vetx} = \begin{bmatrix}
+    -1 \\ +1 \\ -1 \\ +1 \\ -1
+\end{bmatrix}  
+\end{equation}
+O primeiro passo é calcularmos a nossa matriz W. Computacionalmente, podemos calculá-la, pela seguinte expressão:
+\begin{equation}
+    W = XX^T - KI_{N\times N} = \begin{bmatrix}
+        0 & 2 & 0 & 2 & 0 \\
+        2 & 0 & 0 & 2 & 0 \\
+        0 & 0 & 0 & 0 & 2 \\
+        2 & 2 & 0 & 0 & 0 \\
+        0 & 0 & 2 & 0 & 0 
+    \end{bmatrix}
+\end{equation}
+Agora, podemos recordar o nosso vetor $\vetx_r$.
+\begin{equation}
+    x^\xi_i = \sgn\left(\sum^N_{j = 0}  w_{ij}x_j^\xi\right) = \begin{bmatrix}
+        +1 \\ +1 \\ -1 \\ +1 \\ -1 = \vetx^2
+    \end{bmatrix}
+\end{equation}
+Logo, vemos que o nosso $\vetx_r$ foi recordado perfeitamente neste nosso exemplo.
+\end{example}
+
+Uma das categorias mais importantes da rede de Hopfield é a sua questão de energia que iremos introduzir na próxima sessão.
+\subsection{Demonstração da Energia}
+Uma das maiores contribuições da rede de Hopfield é a introdução do conceito da energia do sistema que é definida como \cite{hopfield82}:
+\begin{equation}
+\label{Energia_básica}
+    E(x) = -\frac{1}{2}XWX^{T}
+\end{equation}
+Por isso, para calcular a variação da energia é necessário:
+\begin{equation}
+    \Delta E = E_{atual} - E_{anterior}
+\end{equation}
+O mais importante é encontrarmos uma expressão, como observada em \ref{Energia_básica}, mais simplificada.
+\begin{equation}
+    \label{Variação_energia}
+    E(x) = -\frac{1}{2}XWX^T= -\frac{1}{2} \left(\sum_{i = 0}^{N}\sum_{j = 0}^{N}x_iw_{ij}x_j \right)
+\end{equation}
+Suponhamos que atualizamos um neurônio k. Vamos denotar o estado novo como $X'$.
+\begin{equation}
+\label{Somatorio_energia}
+    E(x) = -\frac{1}{2}\left(\sum_{i\neq k}\sum_{j\neq k}x'_iw_{ij}x'_j\right)
+\end{equation}
+Para isso, temos alguns casos:
+\begin{itemize}
+    \item Quando $ i \neq k $ e $ j \neq k$.
+    \item Quando $ i = k$ e $ j \neq k$.
+    \item Quando $ i \neq k$ e $ j = k$.
+    \item Quando $ i = k$ e $ j = k$.
+\end{itemize}
+Decompondo o somatório em \ref{Somatorio_energia}. Obtemos:
+\begin{equation}
+\label{casos_somatório}
+    E(x') = -\frac{1}{2}\left( \sum_{i \neq k}\sum_{j \neq k}x'_{i}w_{ij}x'_{j} + \sum_{j \neq k}x'_kw_{kj}x'_j + \sum_{i \neq k}x'_iw_{ik}x'_k + x'_kw_{kk}x'_k\right)
+\end{equation}
+Temos alguns pontos a considerar dessa expressão obtida.
+
+O primeiro somatório é um termo invariante, pois sabemos que $x'_i = x_i$, quando $i \neq k$
+\begin{equation}
+  \sum_{i \neq k}\sum_{i \neq k}x'_{i}w_{ij}x'_{j}  = \sum_{i \neq k}\sum_{i \neq k}x_{i}w_{ij}x_{j}
+\end{equation}
+
+Para os próximos dois somatórios podemos usar a definição da nossa matriz W, que ela é simétrica. Com isso, temos:
+\begin{equation}
+    \sum_{j \neq k}x'_kw_{kj}x'_j = \sum_{i \neq k}x'_iw_{ik}x'_k
+\end{equation}
+Por fim, para o último termo. Podemos usar a ideia que a diagonal da matriz W, é nula. Logo, este termo é nulo, resultando em:
+\begin{align}
+    E(x') = -\frac{1}{2}\left( \sum_{i \neq k}\sum_{i \neq k}x'_{i}w_{ij}x'_{j} + \sum_{j \neq k}x'_kw_{kj}x'_j + \sum_{i \neq k}x'_iw_{ik}x'_k + x'_kw_{kk}x'_k\right) \\ = -\frac{1}{2}\left(\sum_{i \neq k}\sum_{j \neq k} x_iw_{ij}x_j + 2 \sum_{j \neq k}x'_kw_{kj}x_j \right)
+\end{align}
+
+Finalmente, podemos utilizar a Equação (\ref{Variação_energia}).
+\begin{align}
+    \Delta E = E_{atual} - E_{anterior} = -\sum_{j \neq k}x'_kw_{kj}x_j + \sum_{j \neq k}x_kw_{kj}x_j \\
+    = - (x'_k - x_k)\sum_{j \neq k}w_{kj}x_j                                                                                           
+\end{align}
+
+\subsection{Probabilidade}
+ Suponha que o nosso conjunto de memórias fundamentais seja: $\{\vetx^1, \vetx^2, \dots, \vetx^p\}$, em que cada vetor tenha a forma: $\vetx^{\xi} = \{x_1^\xi, x_2^\xi, \dots, x_n^{\xi}\}$. Por fim, assumiremos que a probabilidade resultante($P_r$), seja: $P\_r = [\vetx^\xi_n = +1 ] = p$, com $p_r$ sendo a probabilidade de termos algum vetor $\vetx^\xi_{n} = +1$. 
+
+Pelo nosso modelo de Hopfield, temos que:
+\begin{equation}
+    \vetx_i^\xi = \sgn(x)(\sum_{j = 1}^{n}w_{ij}x^{\xi}_j)
+ \end{equation}
+Ou seja,
+\begin{equation}
+    (\sum_{j \neq i}^{n}w_{ij} x_j^\xi)x^\xi_i \geq 0
+\end{equation}
+
+Podemos agora, substituir o elemento w.
+\begin{align}
+    (\sum_{j\neq i}^n(\sum^p_{\mu = 1}(x_i^\mu x_{j}^{\mu}) x_j^\xi x_i^\xi)) \geq 0 \\
+    \Leftrightarrow \sum_{j\neq i}^n x_i^\xi x_j^\xi x_j^\xi x_i^\xi + \sum^n_{j \neq i}\sum^p_{\mu\neq\xi} x_i^\mu x_{j}^{\mu} x_j^\xi x_i^\xi \geq 0
+\end{align}
+Vamos analisar o primeiro somatório: $\sum_{j\neq i}^n x_i^\xi x_j^\xi x_j^\xi x_i^\xi$.
+Temos que $ x_i^\xi x_i^\xi = 1$ e da mesma forma $ x_j^\xi x_j^\xi = 1$. Por isso, simplificamos a expressão.
+\begin{align}
+    \Leftrightarrow (n - 1) + \sum^n_{j \neq i}\sum^p_{\mu\neq\xi} x_i^\mu x_{j}^{\mu} x_j^\xi x_i^\xi \geq 0 \\
+    \Leftrightarrow
+    \sum^n_{j \neq i}\sum^p_{\mu\neq\xi} x_i^\mu x_{j}^{\mu} x_j^\xi x_i^\xi \geq 1 - n
+\end{align}
+Sabemos que cada termo deste somatório equivale a -1 ou a 1. Por isso, vamos tentar escrevê-lo como 0 ou 1, a fim de podermos colocarmos em uma notação de probabilidade.
+Seja $z = \vetx_i^\mu\vetx_{j}^{\mu}\vetx_j^\xi\vetx_i^\xi$. Logo, temos:
+\begin{align}
+    u = \frac{z+1}{2}= \begin{cases}
+         1, \quad z = +1 \\
+         0, \quad z = -1
+    \end{cases} \\
+    \Leftrightarrow 2u - 1 = z
+\end{align}
+Agora, tendo a possibilidade de substituir:
+\begin{align}
+\Leftrightarrow    \sum^{(n-1)(p-1)}_{k = 1}z_{k} \geq 1 - n \\
+\Leftrightarrow   \sum^{(n-1)(p-1)}_{k = 1}(2u_k - 1) \geq 1 - n  \\
+\Leftrightarrow 2\sum^{(n-1)(p-1)}_{k=1}u_k  -(n-1)(p-1) \geq 1 - n \\
+\Leftrightarrow \sum^{(n-1)(p-1)}_{k=1}u_k  \geq \frac{1 - n +(n-1)(p-1)}{2} \\
+\Leftrightarrow \sum^{(n-1)(p-1)}_{k=1}u_k  \geq \frac{(n-1)(p-2)}{2}
+\end{align}
+Relembrando o que cada variável simboliza é que a nossa rede de neurônios possui n neurônios e p imagens. Vamos supor que a probabilidade de $u_k = 1$, valha ($p_k$). Devido a formação do problema, temos que a nossa expressão segue uma distribuição binomial. Então, devido a sua possível grande dimensão, vamos fazer uma aproximação da nossa binomial para uma distribuição Gaussiana.
+Primeiro, iremos calcular algumas variáveis importantes para a conversão: a média($m$) e desvio padrão($\sigma$). Além disso, $N$ é igual ao número de amostras.
+\begin{align}
+    m = Np_r = (n-1)(p-1)(p_r) \\
+    \sigma = \sqrt{Np_r(1-p_r)} = \sqrt{(n-1)(p-1)(1- p_r)(p_r)} 
+\end{align}
+
+Por fim, iremos definir o z-score, como $z = \frac{x - m}{\sigma}$. Com isso, podemos escrever.
+\begin{align}
+    P\left(X \geq X_{\text{min}}\right) = P\left(\frac{X - m}{\sigma} \geq \frac{X_{\text{min}} - m}{\sigma}\right) = P\left(z \geq \frac{\frac{(n-1)(p-2)}{2} - (n-1)(p-1)(p_r)}{\sqrt{(n-1)(p-1)(pr)(1-p_r)}}\right) 
+\end{align}
+Resultando em:
+\begin{equation}
+\label{eq:caso_geral_pr}
+    P\left(z \geq \frac{(n-1)\left[(p-1)(1 - 2p_r) -1\right]}{2\sqrt{(n-1)(p-1)p_r(1-p_r)}}\right)
+\end{equation}
+Um fato interessante desta expressão que se considerarmos um valor comum de $p_r = 0,5$, um número comum na literatura. Iremos obter que $(1-2p_r) = 0$, o que irá nos ajudar a simplificar a expressão. Por isso, iremos obter, para $p_r = 0,5$.
+
+\begin{equation}
+    \label{eq:prob_0.5}
+    P\left(Z \geq \frac{1-n}{\sqrt{(n-1)(p-1)}}\right)
+\end{equation}
+
+\begin{comment}
+OBS: Aqui que vamos ter uma versão nova . Relembrando o que cada variável simboliza é que a nossa rede de neurônios possui n neurônios e p imagens. Vamos supor que a probabilidade($p_k$) de $u_k = 1$, vale $0,5$. Devido a formação do problema, temos que a nossa expressão segue uma distribuição binomial. Então, devido a sua possível dimensão, vamos fazer uma aproximação da nossa binomial para uma distribuição Gaussiana.
+Primeiro, iremos calcular algumas variáveis importantes para a conversão: a média($m$) e desvio padão($\sigma$). Além disso, $N$ é igual ao número de amostras.
+\begin{align}
+    m = Np_r = (n-1)(p-1)\cdot(0,5) \\
+    \sigma = \sqrt{Np_r(1-p_r)} = \sqrt{(n-1)(p-1)(0,5)(0,5)} = \frac{\sqrt{(n-1)(p-1)}}{2}
+\end{align}
+
+Por fim, iremos definir o z-score, como $z = \frac{x - m}{\sigma}$. Com isso, podemos escrever.
+\begin{align}
+    P\left(X \geq X_{\text{min}}\right) = P\left(\frac{X - m}{\sigma} \geq \frac{X_{\text{min}} - m}{\sigma}\right) = P\left(z \geq \frac{(\frac{(n-1)(p-2)}{2} - \frac{(n-1)(p-1)}{2}}{\frac{\sqrt{(n-1)(p-1)}}{2}}\right) \\
+    P\left(z \geq \frac{(n-1)(p-2) - (n-1)(p-1)}{\sqrt{(n-1)(p-1)}}\right)
+\end{align}
+Resultando em:
+\begin{equation}
+    P\left(Z \geq \frac{1-n}{\sqrt{(n-1)(p-1)}}\right)
+\end{equation}
+\end{comment}
+\subsubsection{Análise estatística}
+ Na última sessão, obtemos as equações para um neurônio estar estável, mas será que esses valores são bons? Vamos usar a Equação \ref{eq:prob_0.5} que é uma forma mais compacta para verificarmos alguns exemplos.
+
+ \begin{example}
+    \label{ex:prob}
+     Neste exemplo, vamos considerar que temos 10 imagens($p = 10$) e temos 5 neurônios($n = 5$).
+     Usando a expressão obtida em \ref{eq:prob_0.5} — OBS: o nosso $p_r = 0,5$. Temos:
+     \begin{equation}
+         \frac{1 -n }{\sqrt{(n-1)(p-1)}} = \frac{-4}{\sqrt{36}} = -\frac{4}{6} = -0,66
+     \end{equation}
+     Sendo este o valor de z-score encontrado, olhando uma tabela da distribuição normal padrão, vemos que para a área a esquerda do nosso gráfico seria de aproximadamente de $0,2546$, porém como o nosso $Z$ tem de ser maior, então basta $1 - 0,2546 = 0,7454$, sendo essa probabilidade de 1 neurônio estar estável, porém nós temos 5 neurônios. 
+
+     Então, o nosso objetivo é encontrar qual é a possibilidade de todos os neurônios recordarem corretamente o nosso conjunto de memórias fundamentais, o que seria $(0,7454)^5 \approx 0,2311$, o que nos fornece uma probabilidade baixa para tal tarefa.
+ \end{example}
+
+ \begin{figure}
+    \centering
+    \includegraphics[width =0.8\linewidth]{Figuras/Graficos/analise_prxp.png}
+    \caption{Gráfico da possibilidade pelo número de imagens recordadas para $p_r = 0,5$} 
+    \label{fig:graficoprxp}
+\end{figure}
+
+Neste gráfico, representado na Figura \ref{fig:graficoprxp}, podemos ver na reta azul, como funciona a recordação por um único neurônio, decrescendo de uma maneira menos abrupta, do que a outra reta(laranja) em que representa a probabilidade de todos recordarem. Isso se dá, como vimos no Exemplo \ref{ex:prob}, pelo fato de termos que elevar a probabilidade pelo número de neurônios. 
+
+Nesta análise, vamos aumentando o $p$(número de imagens) para vermos até onde o nosso modelo apresenta resultados satisfatórios. Por isso, o nosso gráfico de maior importância é o laranaja em que podemos ver o comportamento geral da rede. Nele, vemos que o limite é um pouco menor do que 50 imagens, para termos uma garantia de sucesso, pois vemos que a sua descida é bastante rápida e íngrime.
+
+ 
+\subsection{Recordação com imagens aleatórias}
+
+Até agora trabalhamos principalmente com imagens que possuem um $p_r = 0,5$. Por isso, vamos iniciar nossos testes com este tipo de imagens.
+
+Basicamente, nós vamos obter quantas vezes o nosso modelo recorda o primeiro vetor corretamente em 100 testes diferentes, para cada número de imagens que o nosso modelo possui, indo de 1 imagem até 156.
+
+Após realizarmos os cálculos, comparamos os resultados reais com os teóricos e obtemos, na Figura \ref{fig:realxteorico}, o resultado.
+
+\begin{figure}
+    \centering
+    \includegraphics[width = 0.8 \linewidth]{Figuras/Graficos/analise_realxteorico.png}
+    \caption{Gráfico que compara o modelo teórico com os resultados reais para $p_r = 0,5$}
+    \label{fig:realxteorico}
+\end{figure}
+
+Portanto, vemos que o nosso modelo teórico se comportou da forma que estávamos prevendo, o que confirma o que nós fizemos até agora, o que nos permite tornar as nossas entradas mais complexas e observar o que irá acontecer.
+
+\subsection{Recordação com imagens reais}
+
+Nesta subseção, iremos criar um modelo de memórias fundamentais utilizando a biblioteca MNIST.
+
+Da mesma forma que fizemos no Exemplo \ref{ex:prob}, apresentaremos como funciona esse processo para exemplos reais. Vamos pegar um conjunto de imagens da biblioteca "MNIST" que representa a imagem de números escritos por pessoas a mão. Nesta biblioteca, temos imagens de 28 pixels em tons de cinza e, também, temos um aspecto importante: o nosso $p_r \approx 0,124$
+
+O primeiro passo é torná-las imagens binárias, isto é, possuindo apenas uns ou zeros \textemdash  \hspace{1cm} uma exigência da Rede de Hopfield.
+ 
+Agora iremos traçar o gráfico que irá representar o nosso modelo teórico, simbolizado na Equação \ref{eq:caso_geral_pr} e representado no gráfico da Figura \ref{fig:graficopr_MNIST}.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width = 0.8 \linewidth]{Figuras/Graficos/analise_mnist_prob.png}
+    \caption{Gráfico da possibilidade pelo número de imagens recordadadas para diferentes $p_r$}
+    \label{fig:graficopr_MNIST}
+\end{figure}
+
+Ao observar a figura \ref{fig:graficopr_MNIST}, observamos que o nosso modelo é bastante sensível a variações de $p_r$. Para $pr = 0,12$, a estimativa fornecida por \ref{eq:caso_geral_pr} com $p=2$ fornece uma probabilidade de armazenar uma memória fundamental próxima de zero. Dessa forma, podemos esperar que a rede de Hopfield não consiga armazenar corretamente 10 imagens da base MNIST.
+
+Mesmo assim, vamos ver qual será o nosso resultado experimental. Para isso, montamos um conjunto de memórias fundamentais com 10 imagens, com cada dígito de 0 a 9, sendo representado cada algarismo uma única vez.
+
+Para exemplificarmos o nosso modelo de memórias fundamentais, vamos mostar alguns exemplos das nossas imagens do conjunto de memórias fundamentais na Figura \ref{fig:conjuntoMNIST}.
+
+
+\begin{figure}
+        \centering
+        \caption{Algumas das imagens que foram retiradas da biblioteca MNIST}
+        \label{fig:conjuntoMNIST}
+\begin{tabular}{ccc}
+    Algarismo 8  & Algarismo 0 & Algarismo 1 \\
+     \includegraphics[width = 0.2 \linewidth] {Figuras/num_MNIST/MNIST1.png}&  \includegraphics[width = 0.2\linewidth]{Figuras/num_MNIST/MNIST2.png} &
+     \includegraphics[width = 0.2\linewidth]{Figuras/num_MNIST/MNIST3.png}
+\end{tabular}
+
+\end{figure}
+
+
+Ao realizarmos as recordações de todos os itens que estavam dentro do conjunto de memórias fundamentais e mais alguns novos itens; acabamos nos deparando com um resultado interessante: todas as recordações convergiram ao mesmo resultado, como representado na Figura \ref{fig:recordacao_MNIST}
+
+\begin{figure}
+    \centering
+    \includegraphics[width = 0.2
+\linewidth]{Figuras/Recordacao/yr_1.png}
+    \caption{Resultado de todas as recordações realizadas}
+    \label{fig:recordacao_MNIST}
+\end{figure}
+
+
+Com isso, concluímos que a rede de Hopfield não conseguiu recordar nenhuma das imagens do conjunto de memórias fundamentais. Dessa forma, observamos um fenômeno interessante: a nossa rede de Hopfield, para a probabilidade de $0,12$, converge para um resultado fixo, independentemente da nossa entrada, o que pode ser chamado de estado espúrio.
+
+
+\section{Considerações Finais}
+
+Durante este relatório, estudamos algumas nuances da rede de Hopfield, como sendo uma espécie de memória auto-associativa, onde temos $p$ entradas e $N$ neurônios: $\{\vetx^1, \vetx^2, \dots, \vetx^p\}$ com $x_i^\xi \in \{-1, 1\} \quad \forall i = 1, \dots, N$.
+
+O primeiro ponto de extrema importância é o comportamento coletivo da rede, o que significa que cada neurônio será influenciado por todos os outros.
+
+Além disso, nós podemos caracterizar o comportamento da rede de Hopfield por meio da implementação do conceito de energia do sistema, que será sempre negativo. Ao termos o conhecimento de tal ideia, demonstramos a partir do cálculo da variação de energia.
+
+Analisando tais resultados, temos que quando a variação da energia do sistema for negativa, iremos ter se houve uma atualização do estado de algum neurônio e, zero se todos os neurônios permanecerem do mesmo jeito que estavam antes.
+
+Também um dos maiores apontamentos deste estudo foi a identificação da probabilidade em função do número neurônios, o número de entradas e da probabilidade de cada elemento do vetor($p_r$) for igual a 1, como deduzido em \ref{eq:caso_geral_pr}. Assim, identificamos que ao transformarmos para a binomial, iremos ter variações muito bruscas, tendendo a zero, para todos os valores que não fossem $p_k \approx 0,5$.
+
+Em virtude deste resultado, os nossos testes com imagens reais utilizando a biblioteca MNIST não foram passíveis de recordar corretamente o nosso conjunto de memórias fundamentais, o que era esperado, pois, neste conjunto de dados, o $p_r \approx 0,12 $. Por fim, sendo identificado uma espécie de estado espúrio que sempre atrai a nossa saída para um resultado fixo, independente da nossa entrada.
+
+\section{Agradecimentos}
+Agradeço ao CNPq pelo apoio financeiro através do Programa de Iniciação Científica e Mestrado (PICME) e também, mais uma vez, ao meu orientador, Marcos Eduardo Valle, por ter me apoiado e me guiado de uma maneira maravilhosa.
+
+\bibliographystyle{acm}
+\bibliography{references}
+     
+\end{document}
